@@ -18,7 +18,7 @@ func main() {
 		return
 	}
 
-	if IsNegativeValue(sides) {
+	if IsAnyNegativeValue(sides) {
 		fmt.Println("[!] All 3 argruments must be positive value.")
 		return
 	}
@@ -47,7 +47,7 @@ func IsAllArgsAreInt() (isTriangle bool, sides [3]int) {
 	return
 }
 
-func IsNegativeValue(sides [3]int) bool {
+func IsAnyNegativeValue(sides [3]int) bool {
 	for _, sideWidth := range sides {
 		if sideWidth < 0 {
 			return true
