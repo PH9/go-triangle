@@ -30,6 +30,10 @@ func main() {
 		fmt.Println("[!] There is some value is out of range.")
 		return
 	}
+
+	if IsEquilateral(sides) {
+		fmt.Println("[A] Equilateral.")
+	}
 }
 
 func ShowHelp() bool {
@@ -71,4 +75,13 @@ func IsAnyValueMoreThanMaximumRange(sides [MAXIMUM_SIZE]int, maximumValueValidab
 		}
 	}
 	return false
+}
+
+func IsEquilateral(sides [MAXIMUM_SIZE]int) bool {
+	for i := 1; i < len(sides); i++ {
+		if sides[0] != sides[i] {
+			return false
+		}
+	}
+	return true
 }
