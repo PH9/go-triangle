@@ -11,8 +11,15 @@ func main() {
 		return
 	}
 
-	if isInteger, _ := IsAllArgsAreInt(); !isInteger {
+	var sides [3]int
+	var isInteger bool
+	if isInteger, sides = IsAllArgsAreInt(); !isInteger {
 		fmt.Println("[!] Please enter all 3 parameters with integer value.")
+		return
+	}
+
+	if IsNegativeValue(sides) {
+		fmt.Println("[!] All 3 argruments must be positive value.")
 		return
 	}
 }
@@ -38,4 +45,13 @@ func IsAllArgsAreInt() (isTriangle bool, sides [3]int) {
 	}
 	isTriangle = true
 	return
+}
+
+func IsNegativeValue(sides [3]int) bool {
+	for _, sideWidth := range sides {
+		if sideWidth < 0 {
+			return true
+		}
+	}
+	return false
 }
