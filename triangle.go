@@ -31,6 +31,10 @@ func main() {
 		return
 	}
 
+	if SumOfTwoSidesOfTriangleMustBeMoreThanTheLeftSide(sides) {
+		fmt.Println("[!] Not a triangle.")
+	}
+
 	if IsEquilateral(sides) {
 		fmt.Println("[A] Equilateral.")
 	}
@@ -73,6 +77,22 @@ func IsAnyValueMoreThanMaximumRange(sides [MAXIMUM_SIZE]int, maximumValueValidab
 		if sideWidth > maximumValueValidable {
 			return true
 		}
+	}
+	return false
+}
+
+func SumOfTwoSidesOfTriangleMustBeMoreThanTheLeftSide(sides [MAXIMUM_SIZE]int) bool {
+	if IsSumOfABIsLessThanC(sides[0], sides[1], sides[2]) {
+		return true
+	} else if IsSumOfABIsLessThanC(sides[1], sides[2], sides[0]) {
+		return true
+	}
+	return false
+}
+
+func IsSumOfABIsLessThanC(a int, b int, c int) bool {
+	if a+b < c {
+		return true
 	}
 	return false
 }
