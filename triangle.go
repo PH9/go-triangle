@@ -109,7 +109,7 @@ func SumOfTwoSidesOfTriangleMustBeMoreThanTheLeftSide(sides [MAXIMUM_SIZE]int) b
 }
 
 func IsSumOfABIsLessThanC(a int, b int, c int) bool {
-	if a+b < c {
+	if a+b <= c {
 		return true
 	}
 	return false
