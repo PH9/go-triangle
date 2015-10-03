@@ -101,9 +101,8 @@ func IsAnyValueMoreThanMaximumRange(sides [MAXIMUM_SIZE]int, maximumValueValidab
 }
 
 func SumOfTwoSidesOfTriangleMustBeMoreThanTheLeftSide(sides [MAXIMUM_SIZE]int) bool {
-	if IsSumOfABIsLessThanC(sides[0], sides[1], sides[2]) {
-		return true
-	} else if IsSumOfABIsLessThanC(sides[1], sides[2], sides[0]) {
+	if IsSumOfABIsLessThanC(sides[0], sides[1], sides[2]) ||
+		IsSumOfABIsLessThanC(sides[1], sides[2], sides[0]) {
 		return true
 	}
 	return false
