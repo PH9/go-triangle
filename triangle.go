@@ -53,7 +53,7 @@ func main() {
 		return
 	}
 
-	fmt.Println("[!] Not a truangle.")
+	fmt.Println("[!] Not a triangle.")
 }
 
 func ShowHelpIfArgsMissMatch() bool {
