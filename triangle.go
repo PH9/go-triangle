@@ -8,6 +8,8 @@ import (
 
 const MAXIMUM_SIZE = 3
 const MAXIMUM_ARGRUMENTS = MAXIMUM_SIZE + 1
+const MAXIMUM_VALUE = 200
+const MINNIMUM_VALUE = 0
 
 func main() {
 	if ShowHelpIfArgsMissMatch() {
@@ -26,13 +28,17 @@ func main() {
 		return
 	}
 
-	if IsAnyValueMoreThanMaximumRange(sides, 200) {
+	if IsAnyValueMoreThanMaximumRange(sides, MAXIMUM_VALUE) {
 		fmt.Println("[!] There is some value is out of range.")
 		return
 	}
 
 	if SumOfTwoSidesOfTriangleMustBeMoreThanTheLeftSide(sides) {
 		fmt.Println("[!] Not a triangle.")
+	}
+
+	if IsRightTriangle(sides) {
+		fmt.Println("[A] Right Triangle.")
 	}
 
 	if IsEquilateral(sides) {
@@ -65,7 +71,7 @@ func IsAllArgsAreInt() (isTriangle bool, sides [MAXIMUM_SIZE]int) {
 
 func IsAnyNegativeValue(sides [MAXIMUM_SIZE]int) bool {
 	for _, sideWidth := range sides {
-		if sideWidth < 0 {
+		if sideWidth < MINNIMUM_VALUE {
 			return true
 		}
 	}
@@ -95,6 +101,19 @@ func IsSumOfABIsLessThanC(a int, b int, c int) bool {
 		return true
 	}
 	return false
+}
+
+func IsRightTriangle(sides [MAXIMUM_SIZE]int) bool {
+	if PowerTwo(sides[0])+PowerTwo(sides[1]) == PowerTwo(sides[2]) ||
+		PowerTwo(sides[0])+PowerTwo(sides[2]) == PowerTwo(sides[1]) ||
+		PowerTwo(sides[1])+PowerTwo(sides[2]) == PowerTwo(sides[0]) {
+		return true
+	}
+	return false
+}
+
+func PowerTwo(number int) int {
+	return number * number
 }
 
 func IsEquilateral(sides [MAXIMUM_SIZE]int) bool {
