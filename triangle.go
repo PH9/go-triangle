@@ -10,7 +10,7 @@ const MAXIMUM_SIZE = 3
 const MAXIMUM_ARGRUMENTS = MAXIMUM_SIZE + 1
 
 func main() {
-	if ShowHelp() {
+	if ShowHelpIfArgsMissMatch() {
 		return
 	}
 
@@ -40,7 +40,7 @@ func main() {
 	}
 }
 
-func ShowHelp() bool {
+func ShowHelpIfArgsMissMatch() bool {
 	if len(os.Args) != MAXIMUM_ARGRUMENTS {
 		fmt.Println("[I] Please enter 3 parameters for 3 sides of triangle.")
 		fmt.Println("    eg. " + os.Args[0] + " 3 4 5")
