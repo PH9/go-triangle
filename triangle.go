@@ -35,19 +35,25 @@ func main() {
 
 	if SumOfTwoSidesOfTriangleMustBeMoreThanTheLeftSide(sides) {
 		fmt.Println("[!] Not a triangle.")
+		return
 	}
 
 	if IsAnyRightTriangle(sides) {
 		fmt.Println("[A] Right Triangle.")
+		return
 	}
 
 	if IsEquilateral(sides) {
 		fmt.Println("[A] Equilateral.")
+		return
 	}
 
 	if IsAnyIsosceles(sides) {
 		fmt.Println("[A] Isosceles.")
+		return
 	}
+
+	fmt.Println("[!] Not a truangle.")
 }
 
 func ShowHelpIfArgsMissMatch() bool {
@@ -143,5 +149,5 @@ func IsAnyIsosceles(sides [MAXIMUM_SIZE]int) bool {
 }
 
 func IsIsosceles(a int, b int, c int) bool {
-	return a+b > c
+	return a == b && a+b > c
 }
