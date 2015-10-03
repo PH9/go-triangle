@@ -37,7 +37,7 @@ func main() {
 		fmt.Println("[!] Not a triangle.")
 	}
 
-	if IsRightTriangle(sides) {
+	if IsAnyRightTriangle(sides) {
 		fmt.Println("[A] Right Triangle.")
 	}
 
@@ -103,13 +103,17 @@ func IsSumOfABIsLessThanC(a int, b int, c int) bool {
 	return false
 }
 
-func IsRightTriangle(sides [MAXIMUM_SIZE]int) bool {
-	if PowerTwo(sides[0])+PowerTwo(sides[1]) == PowerTwo(sides[2]) ||
-		PowerTwo(sides[0])+PowerTwo(sides[2]) == PowerTwo(sides[1]) ||
-		PowerTwo(sides[1])+PowerTwo(sides[2]) == PowerTwo(sides[0]) {
+func IsAnyRightTriangle(sides [MAXIMUM_SIZE]int) bool {
+	if IsRightTriangle(sides[0], sides[1], sides[2]) ||
+		IsRightTriangle(sides[0], sides[2], sides[1]) ||
+		IsRightTriangle(sides[1], sides[2], sides[0]) {
 		return true
 	}
 	return false
+}
+
+func IsRightTriangle(a int, b int, c int) bool {
+	return PowerTwo(a)+PowerTwo(b) == c
 }
 
 func PowerTwo(number int) int {
