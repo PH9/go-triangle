@@ -53,7 +53,10 @@ func main() {
 		return
 	}
 
-	fmt.Println("[!] Not a triangle.")
+	if IsAnyScalene(sides) {
+		fmt.Println("[A] Scalene.")
+		return
+	}
 }
 
 func ShowHelpIfArgsMissMatch() bool {
@@ -150,4 +153,15 @@ func IsAnyIsosceles(sides [MAXIMUM_SIZE]int) bool {
 
 func IsIsosceles(a int, b int, c int) bool {
 	return a == b && a+b > c
+}
+
+func IsAnyScalene(sides [MAXIMUM_SIZE]int) bool {
+	if IsScalene(sides[0], sides[1], sides[2]) {
+		return true
+	}
+	return false
+}
+
+func IsScalene(a int, b int, c int) bool {
+	return a != b && a != c && b != c
 }
