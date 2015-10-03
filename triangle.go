@@ -44,6 +44,10 @@ func main() {
 	if IsEquilateral(sides) {
 		fmt.Println("[A] Equilateral.")
 	}
+
+	if IsAnyIsosceles(sides) {
+		fmt.Println("[A] Isosceles.")
+	}
 }
 
 func ShowHelpIfArgsMissMatch() bool {
@@ -127,4 +131,17 @@ func IsEquilateral(sides [MAXIMUM_SIZE]int) bool {
 		}
 	}
 	return true
+}
+
+func IsAnyIsosceles(sides [MAXIMUM_SIZE]int) bool {
+	if IsIsosceles(sides[0], sides[1], sides[2]) ||
+		IsIsosceles(sides[0], sides[2], sides[1]) ||
+		IsIsosceles(sides[1], sides[2], sides[0]) {
+		return true
+	}
+	return false
+}
+
+func IsIsosceles(a int, b int, c int) bool {
+	return a+b > c
 }
