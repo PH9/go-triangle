@@ -18,10 +18,10 @@ func main() {
 	} else if a+b <= c || a+c <= b || b+c <= a {
 		fmt.Println("[!] Not a triangle.")
 	} else {
-		aPow2 := a * a
-		bPow2 := b * b
-		cPow2 := c * c
-		if aPow2+bPow2 == cPow2 || aPow2+cPow2 == bPow2 || bPow2+cPow2 == aPow2 {
+		aSqrt := a * a
+		bSqrt := b * b
+		cSqrt := c * c
+		if aSqrt+bSqrt == cSqrt || aSqrt+cSqrt == bSqrt || bSqrt+cSqrt == aSqrt {
 			fmt.Println("[A] Right Triangle.")
 		} else if a == b && b == c {
 			fmt.Println("[A] Equilateral.")
