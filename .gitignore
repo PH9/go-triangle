@@ -1,1 +1,6 @@
 *.exe
+\bin
+\docs
+
+# Dropbox files
+.dropbox
