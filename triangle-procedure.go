@@ -11,7 +11,7 @@ func main() {
 	b, _ := strconv.Atoi(os.Args[1])
 	c, _ := strconv.Atoi(os.Args[2])
 
-	if a < 0 || b < 0 || c < 0 {
+	if a <= 0 || b <= 0 || c <= 0 {
 		fmt.Println("[!] All 3 argruments must be positive value.")
 	} else if a > 200 || b > 200 || c > 200 {
 		fmt.Println("[!] There is some value is out of range.")
