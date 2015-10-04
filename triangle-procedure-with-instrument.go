@@ -7,54 +7,36 @@ import (
 )
 
 func main() {
-	fmt.Println("[s] start application.")
-	if len(os.Args) != 4 {
-		fmt.Println("[I] Please enter 3 parameters for 3 sides of triangle.")
-		fmt.Println("    eg. " + os.Args[0] + " 3 4 5")
-		return
-	}
-	fmt.Println("[s] end check only 3 args.\n[s] init variable int[] to hold 3 args.")
+	fmt.Println("[S] Start application.\n[S] Converting args to int.")
+	a := strconv.Atoi(os.Args[0])
+	b := strconv.Atoi(os.Args[1])
+	c := strconv.Atoi(os.Args[2])
+	fmt.Println("[S] Converted args to int.")
 
-	var sides [3]int
-	fmt.Println("[s] init variable finished.")
-
-	fmt.Println("[s] start loop to convert all args to int.")
-	for i := 1; i < 4; i++ {
-		fmt.Println("[s] args index at", i, "start.")
-		side, err := strconv.Atoi(os.Args[i])
-		if err != nil {
-			fmt.Println("[s] args index at", i, "is not an integer.")
-			fmt.Println("[!] Please enter all 3 parameters with integer value.")
-			return
-		} else {
-			fmt.Println("[s] args index at", i, "is an integer.")
-			sides[i-1] = side
-		}
-	}
-	fmt.Println("[s] end convert args to int loop.")
-
-	fmt.Println("[s] start checking is triangle.")
-	if sides[0] < 0 || sides[1] < 0 || sides[2] < 0 {
+	if a < 0 || b < 0 || c < 0 {
 		fmt.Println("[!] All 3 argruments must be positive value.")
-	} else if sides[0] > 200 || sides[1] > 200 || sides[2] > 200 {
+	} else if a > 200 || b > 200 || c > 200 {
 		fmt.Println("[!] There is some value is out of range.")
-	} else if sides[0]+sides[1] <= sides[2] || sides[0]+sides[2] <= sides[1] || sides[1]+sides[2] <= sides[0] {
+	} else if a+b <= c || a+c <= b || b+c <= a {
 		fmt.Println("[!] Not a triangle.")
 	} else {
-		fmt.Println("[s] Start check which tyoe of triangle is.")
-		aPow2 := sides[0] * sides[0]
-		bPow2 := sides[1] * sides[1]
-		cPow2 := sides[2] * sides[2]
+		fmt.Println("[S] Values can posible be triangle.")
+
+		fmt.Println("[S] Power 2 all values to prepare Right Triangle.")
+		aPow2 := a * a
+		bPow2 := b * b
+		cPow2 := c * c
+		fmt.Println("[S] Power 2 all values finished.")
 		if aPow2+bPow2 == cPow2 || aPow2+cPow2 == bPow2 || bPow2+cPow2 == aPow2 {
 			fmt.Println("[A] Right Triangle.")
-		} else if sides[0] == sides[1] && sides[1] == sides[2] {
+		} else if a == b && b == c {
 			fmt.Println("[A] Equilateral.")
-		} else if sides[0] == sides[1] && sides[0]+sides[1] > sides[2] || sides[0] == sides[2] && sides[0]+sides[2] > sides[1] || sides[1] == sides[2] && sides[1]+sides[2] > sides[0] {
+		} else if a == b && a+b > c || a == c && a+c > b || b == c && b+c > a {
 			fmt.Println("[A] Isosceles.")
-		} else if sides[0] != sides[1] && sides[0] != sides[2] && sides[1] != sides[2] {
+		} else if a != b && a != c && b != c {
 			fmt.Println("[A] Scalene.")
 		}
-		fmt.Println("[s] end check type")
+		fmt.Println("[S] Finished check triangle type.")
 	}
-	fmt.Println("[s] end of application")
+	fmt.Println("[S] End of application.")
 }
