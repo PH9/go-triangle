@@ -3,36 +3,36 @@ digraph CFG {
 	edge [arrowhead=vee,arrowtail=dot];
 	
 	"1-13" -> 14 [label=" a"];
-	14 -> 15 [label=" b\nF"];
+	14 -> 15 [label="F\nb"];
 	15 -> 34  [label=" d"];
 
-	14 -> 16 [label=" c\nT"];
-	16 -> 17 [label=" e"];
+	14 -> 16 [label="T\nc"];
+	16 -> 17 [label="T\ne"];
 	17 -> 33 [label=" g"];
 
-	16 -> 18 [label=" f"];
-	18 -> 19 [label=" h"];
+	16 -> 18 [label="F\nf"];
+	18 -> 19 [label="T\nh"];
 	19 -> 33 [label=" j"];
 
-	18 -> "20-23" [label=" i"];
+	18 -> "20-23" [label="F\ni"];
 	"20-23" -> 24 [label=" k"];
 
-	24 -> 25 [label=" l\nT"];
+	24 -> 25 [label="T\nl"];
 	25 -> 32 [label=" n"];
 
-	24 -> 26 [label=" m\nF"];
-	26 -> 27 [label=" o\nT"];
-	27 -> 32 [label=" q"];
+	24 -> 26 [label="F\nm"];
+	26 -> 27 [label="T\no"];
+	27 -> 32 [label="F\nq"];
 
-	26 -> 28 [label="p\n F"];
-	28 -> 29 [label=" r\n T"];
+	26 -> 28 [label="F\np"];
+	28 -> 29 [label="T\nr"];
 	29 -> 32 [label=" t"];
 
-	28 -> 30 [label=" s\nF"];
-	30 -> 31 [label=" v\nT"];
+	28 -> 30 [label="F\ns"];
+	30 -> 31 [label="T\nv"];
 	31 -> 32 [label=" w"];
 
-	30 -> 32 [label=" u\nF"];
+	30 -> 32 [label="F\nu"];
 	32 -> 33 [label=" x"];
 
 	33 -> 34 [label=" y"];
