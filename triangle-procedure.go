@@ -7,9 +7,9 @@ import (
 )
 
 func main() {
-	a, _ := strconv.Atoi(os.Args[0])
-	b, _ := strconv.Atoi(os.Args[1])
-	c, _ := strconv.Atoi(os.Args[2])
+	a, _ := strconv.Atoi(os.Args[1])
+	b, _ := strconv.Atoi(os.Args[2])
+	c, _ := strconv.Atoi(os.Args[3])
 
 	if a <= 0 || b <= 0 || c <= 0 {
 		fmt.Println("[!] All 3 arguments must be positive value.")

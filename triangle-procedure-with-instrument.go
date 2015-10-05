@@ -8,9 +8,9 @@ import (
 
 func main() {
 	fmt.Println("[S] Start application.\n[S] Converting args to int.")
-	a, _ := strconv.Atoi(os.Args[0])
-	b, _ := strconv.Atoi(os.Args[1])
-	c, _ := strconv.Atoi(os.Args[2])
+	a, _ := strconv.Atoi(os.Args[1])
+	b, _ := strconv.Atoi(os.Args[2])
+	c, _ := strconv.Atoi(os.Args[3])
 	fmt.Println("[S] Converted args to int.")
 
 	if a <= 0 || b <= 0 || c <= 0 {
