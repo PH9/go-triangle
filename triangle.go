@@ -23,7 +23,7 @@ func main() {
 		return
 	}
 
-	if IsAnyNegativeValue(sides) {
+	if IsLessThanMinimum(sides) {
 		fmt.Println("[!] All 3 argruments must be positive value.")
 		return
 	}
@@ -82,7 +82,7 @@ func IsAllArgsAreInt() (sides [MAXIMUM_SIZE]int, isTriangle bool) {
 	return
 }
 
-func IsAnyNegativeValue(sides [MAXIMUM_SIZE]int) bool {
+func IsLessThanMinimum(sides [MAXIMUM_SIZE]int) bool {
 	for _, sideWidth := range sides {
 		if sideWidth < MINNIMUM_VALUE {
 			return true
