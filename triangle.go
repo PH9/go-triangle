@@ -9,7 +9,7 @@ import (
 const MAXIMUM_SIZE = 3
 const MAXIMUM_ARGRUMENTS = MAXIMUM_SIZE + 1
 const MAXIMUM_VALUE = 200
-const MINNIMUM_VALUE = 0
+const MINNIMUM_VALUE = 1
 
 func main() {
 	if ShowHelpIfArgsMissMatch() {
@@ -18,7 +18,7 @@ func main() {
 
 	var sides [MAXIMUM_SIZE]int
 	var isInteger bool
-	if isInteger, sides = IsAllArgsAreInt(); !isInteger {
+	if sides, isInteger = IsAllArgsAreInt(); !isInteger {
 		fmt.Println("[!] Please enter all 3 parameters with integer value.")
 		return
 	}
@@ -68,7 +68,7 @@ func ShowHelpIfArgsMissMatch() bool {
 	return false
 }
 
-func IsAllArgsAreInt() (isTriangle bool, sides [MAXIMUM_SIZE]int) {
+func IsAllArgsAreInt() (sides [MAXIMUM_SIZE]int, isTriangle bool) {
 	for i := 1; i < MAXIMUM_SIZE+1; i++ {
 		side, err := strconv.Atoi(os.Args[i])
 		if err != nil {
@@ -102,6 +102,7 @@ func IsAnyValueMoreThanMaximumRange(sides [MAXIMUM_SIZE]int, maximumValueValidab
 
 func SumOfTwoSidesOfTriangleMustBeMoreThanTheLeftSide(sides [MAXIMUM_SIZE]int) bool {
 	if IsSumOfABIsLessThanC(sides[0], sides[1], sides[2]) ||
+		IsSumOfABIsLessThanC(sides[0], sides[2], sides[1]) ||
 		IsSumOfABIsLessThanC(sides[1], sides[2], sides[0]) {
 		return true
 	}
@@ -116,16 +117,20 @@ func IsSumOfABIsLessThanC(a int, b int, c int) bool {
 }
 
 func IsAnyRightTriangle(sides [MAXIMUM_SIZE]int) bool {
-	if IsRightTriangle(sides[0], sides[1], sides[2]) ||
-		IsRightTriangle(sides[0], sides[2], sides[1]) ||
-		IsRightTriangle(sides[1], sides[2], sides[0]) {
+	aSqrt := PowerTwo(sides[0])
+	bSqrt := PowerTwo(sides[1])
+	cSqrt := PowerTwo(sides[2])
+
+	if IsAPlusBEqualToC(aSqrt, bSqrt, cSqrt) ||
+		IsAPlusBEqualToC(aSqrt, cSqrt, bSqrt) ||
+		IsAPlusBEqualToC(bSqrt, cSqrt, aSqrt) {
 		return true
 	}
 	return false
 }
 
-func IsRightTriangle(a int, b int, c int) bool {
-	return PowerTwo(a)+PowerTwo(b) == c
+func IsAPlusBEqualToC(a int, b int, c int) bool {
+	return a+b == c
 }
 
 func PowerTwo(number int) int {
