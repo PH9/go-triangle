@@ -6,10 +6,12 @@ import (
 	"strconv"
 )
 
-const MAXIMUM_SIZE = 3
-const MAXIMUM_ARGRUMENTS = MAXIMUM_SIZE + 1
-const MAXIMUM_VALUE = 200
-const MINNIMUM_VALUE = 1
+const (
+	MAXIMUM_SIZE       = 3
+	MAXIMUM_ARGRUMENTS = MAXIMUM_SIZE + 1
+	MAXIMUM_VALUE      = 200
+	MINNIMUM_VALUE     = 1
+)
 
 func main() {
 	if ShowHelpIfArgsMissMatch() {
