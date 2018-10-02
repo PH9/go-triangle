@@ -7,6 +7,10 @@ import (
 )
 
 func main() {
+	if validateArgs() == false {
+		fmt.Println("Required 3 arguments")
+		return
+	}
 	a, _ := strconv.Atoi(os.Args[1])
 	b, _ := strconv.Atoi(os.Args[2])
 	c, _ := strconv.Atoi(os.Args[3])
@@ -31,4 +35,11 @@ func main() {
 			fmt.Println("[A] Scalene.")
 		}
 	}
+}
+
+func validateArgs() bool {
+	if len(os.Args) != 3 {
+		return false
+	}
+	return true
 }
